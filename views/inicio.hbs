@@ -1,0 +1,27 @@
+<div class="body-inicio">
+<header class="header-inicio">
+<h1 class="h1-inicio"><a class="link-h1-inicio" href="/">Inicio</a></h1>
+</header>
+<aside class="aside-inicio" id="aside-inicio">
+<div class="div-aside-1 div-aside"><h2 class="h2-div-1 h2-div" id="usuario" onclick="changeUser()">Usuarios</h1></div>
+<div class="div-aside-2 div-aside"><h2 class="h2-div-2 h2-div" id="libro">Libro</h2></div>
+<div class="div-aside-3 div-aside"><h2 class="h2-div-3 h2-div" id="autor">Autor</h2></div>
+</aside>
+<main class="main-inicio">
+<h1 class="h1-main-inicio">index</h1>
+</main>
+</div>
+<script>
+    const btnUsuario = document.getElementById('usuario')
+    const btnLibro = document.getElementById('libro')
+    const btnAutor = document.getElementById('autor')
+    const tituloMain = document.getElementById('h1.main-inicio')
+
+  function changeUser(){
+    if(tituloMain.innerHTML == "index"){
+        tituloMain.innerHTML == "Usuarios"
+    }else{
+        tituloMain.innerHTML == "Usuarios"
+    }
+  }
+</script>
