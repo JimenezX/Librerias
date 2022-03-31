@@ -1,16 +1,16 @@
 <div class="body-index">
     <header>
-         <h1 class="h1-index">Welcome</h1>
+         <h1 class="h1-index">{{title}}</h1>
     </header>
 
-    <form action="" class="inicio-de-sesion">
+    <form action="/back/user/index-user" class="inicio-de-sesion" method="post">
         <label for="" class="label-usuario">Usuario:</label><br>
-        <input type="text" class="input-usuario"><br>
+        <input type="text" class="input-usuario" name="name"><br>
         <br>
         <label for="" class="label-password">Contraseña:</label><br>
-        <input type="password" class="input-password"><br>
+        <input type="password" class="input-password" name="password"><br>
         <br>
-        <button class="btn-acceder" id="btn-acceder"><a href="/inicio" class="link-index">Acceder</a></button>            
+        <button class="btn-acceder" id="btn-acceder" type="submit">Acceder</button>            
         </form>
 </div> 
 

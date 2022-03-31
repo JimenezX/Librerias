@@ -1,10 +1,16 @@
 const express = require('express')
 const path = require('path')
-let exphbs = require('express-handlebars')
+const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
+
+//Routes
+const routesBack = require('./routes/back/routes')
+const routesFront = require('./routes/front/routes')
+
+//Config
 const app = express()
-
-
 const PORT = 8002
 
 //vistas
@@ -15,25 +21,34 @@ app.engine('.hbs' , exphbs.engine({
   partialsDir: path.join(app.get('views'), 'Partials'),
   extname: '.hbs'
 }))
-
 app.set('view engine', '.hbs')
 
 //middlewares
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 //Rutas
-app.get('/', function (req, res) {
-  res.render('index')
-})
+//back
+app.use('/back', routesBack)
+//Front
+app.use('/', routesFront )
 
-app.get('/inicio', function (req, res) {
-    res.render('inicio')
-  })
+//connect mongoose
 
+mongoose.connect('mongodb://localhost:27017/tarea').then(() => {
+console.log('Mongo conectado correctamente')
 app.listen(PORT, function(err){
   if (err) console.log(err)
 
   console.log('Servidor funcionando en el puerto ' + PORT)
-  console.log(__dirname)
+
 })
+
+
+}).catch((err)=>{
+  console.log('Error al conectar con mongo')
+  console.log('err')
+})
+
 
